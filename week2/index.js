@@ -65,10 +65,10 @@ let BobIsVip = false; /* Bob 是否為 VIP */
 
 // 練習：（可自行將下方程式碼的註解刪除，完成答題）
 if (BobPrice > giftPriceRule || BobIsVip) {
-  console.Log("客戶您好，您有符合贈品資格");
+  console.log("客戶您好，您有符合贈品資格");
   giftNum --
 } else {
-  console.Log("客戶您好，您沒有符合贈品資格");
+  console.log("客戶您好，您沒有符合贈品資格");
 }
 
 console.log(`贈品還剩下${giftNum}個`);
@@ -88,9 +88,9 @@ let baseBonus = 6000; // 基本獎金
 let coachBonus = baseBonus; // 教練業績獎金帳單，並已加入條件一基本獎金
 
 // 練習：計算教練業績獎金
-if (coachIncome > 30*10000) {
+if (coachIncome > 300000) {
   baseBonus += coachIncome*0.2
-} else if ( coachIncome <= 30*10000 && coachIncome > 10*10000) {
+} else if ( coachIncome <= 300000 && coachIncome > 100000) {
   baseBonus += coachIncome*0.15
 } else {
   baseBonus += coachIncome*0.1
@@ -110,19 +110,19 @@ if (playerA === playerB ) {
 } else if (playerA === '剪刀') {
   if (playerB === '石頭') {
     console.log('B贏了');
-  } else if (playerB === '布') {
+  } else {
     console.log('A贏了');
   }
 } else if (playerA === '石頭') {
-  if (playerB === '剪刀') {
-    console.log('A贏了');
-  } else if (playerB === '布') {
+  if (playerB === '布') {
     console.log('B贏了');
+  } else {
+    console.log('A贏了');
   }
 } else if (playerA === '布') {
-  if (playerB === '石頭') {
+  if (playerB === '剪刀') {
     console.log('A贏了');
-  } else if (playerB === '剪刀') {
+  } else  {
     console.log('B贏了');
   }
 }
@@ -149,7 +149,7 @@ if (playerA === playerB ) {
 */
 
 const gymCoach = {
-  王教練: {
+  coachWang: {
     skills: ['strength-training','weight-loss'],
     lessons: [
       {
@@ -168,7 +168,7 @@ const gymCoach = {
     introduction: '王教練擁有 5 年教學經驗，專精於提升學員的肌力與減脂，適合希望快速達成體能目標的學員。',
     recruitStudents: true
   },
-  李教練: {
+  coachLee: {
     skills: ['yoga','body-sculpt'],
     lessons: [
       {
@@ -213,16 +213,16 @@ let performanceData = {
 
 if ( performanceData['coaches'][0]?.performance<=50000) {
   // 請填寫第一位教練業績增長程式碼，使用 +=
-  const currentPerformance = performanceData['coaches'][0]?.performance
-  performanceData['coaches'][0]?.performance += 50000 - currentPerformance
+  const currentPerformance = performanceData['coaches'][0]['performance']
+  performanceData['coaches'][0]['performance'] += 50000 - currentPerformance
 }
 
 // 練習：第二位教練（可將下方程式碼註解移除，完成答題）
 
 if ( performanceData['coaches'][1]?.performance<=50000) {
   // 請填寫第一位教練業績增長程式碼，使用 +=
-  const currentPerformance = performanceData['coaches'][1]?.performance
-  performanceData['coaches'][1]?.performance += 50000 - currentPerformance
+  const currentPerformance = performanceData['coaches'][1]['performance']
+  performanceData['coaches'][1]['performance'] += 50000 - currentPerformance
 }
 
 console.log(performanceData);
@@ -289,40 +289,15 @@ const exerciseRecords = [
   { day: 'Saturday', duration: 60, heartRate: 145 },
 ];
 
-// 範例：週一
-if (exerciseRecords[0].duration >= 30 && exerciseRecords[0].heartRate >= 130) {
-  totalDuration += exerciseRecords[0].duration;
-  validDays += 1;
-}
 
-// 練習：週二、週三、週四、週五、週六
-if (exerciseRecords[1].duration >= 30 && exerciseRecords[1].heartRate >= 130) {
-  totalDuration += exerciseRecords[1].duration;
-  validDays += 1;
-}
-
-if (exerciseRecords[2].duration >= 30 && exerciseRecords[2].heartRate >= 130) {
-  totalDuration += exerciseRecords[2].duration;
-  validDays += 1;
-}
-
-if (exerciseRecords[3].duration >= 30 && exerciseRecords[3].heartRate >= 130) {
-  totalDuration += exerciseRecords[3].duration;
-  validDays += 1;
-}
-
-if (exerciseRecords[4].duration >= 30 && exerciseRecords[4].heartRate >= 130) {
-  totalDuration += exerciseRecords[4].duration;
-  validDays += 1;
-}
 
 // 可以用forEach ...
-// exerciseRecords.forEach(item=>{
-//   if (item.duration >= 30 && item.heartRate >= 130) {
-//     totalDuration += item.duration;
-//     validDays += 1;
-//   }
-// })
+exerciseRecords.forEach(item=>{
+  if (item.duration >= 30 && item.heartRate >= 130) {
+    totalDuration += item.duration;
+    validDays ++;
+  }
+})
 
 // 練習：判斷是否符合 533 原則
 let isCompliant = validDays>=5 || totalDuration >=150 ; // 條件：運動次數至少 5 次 || 運動時間累績達標 >= 150;
