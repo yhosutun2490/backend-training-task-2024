@@ -104,27 +104,14 @@ console.log(`小明總共需支付 $${coachBonus} 獎金`);
 
 let playerA = '剪刀';
 let playerB = '剪刀';
+let winPatterns = ['剪刀布','石頭剪刀','布石頭']
 // 兩者出一樣
 if (playerA === playerB ) {
   console.log('平手');
-} else if (playerA === '剪刀') {
-  if (playerB === '石頭') {
-    console.log('B贏了');
-  } else {
-    console.log('A贏了');
-  }
-} else if (playerA === '石頭') {
-  if (playerB === '布') {
-    console.log('B贏了');
-  } else {
-    console.log('A贏了');
-  }
-} else if (playerA === '布') {
-  if (playerB === '剪刀') {
-    console.log('A贏了');
-  } else  {
-    console.log('B贏了');
-  }
+} else if (winPatterns.includes(playerA+playerB) ) {
+  console.log('A贏了');
+} else {
+  console.log('B贏了');
 }
 // 練習：使用 if, else if, else 判斷輸贏
 
